@@ -366,8 +366,14 @@ html, body {
 }
 
 .tab-bar-icon {
-  font-size: 22px;
-  line-height: 1;
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  opacity: 0.55;
+}
+
+.tab-bar-btn.selected .tab-bar-icon {
+  opacity: 1;
 }
 
 .tab-bar-label {
