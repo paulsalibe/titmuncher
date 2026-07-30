@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Feed Tracker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="app">
+
+  <main id="main-content">
+
+    <section id="tab-log" class="tab-screen">
+      <div class="form-section">
+        <h1 class="app-title">Log a Feed</h1>
+
+        <div class="field">
+          <label class="field-label">Side</label>
+          <div class="side-buttons">
+            <button type="button" id="left-btn" class="side-btn side-btn--left" data-side="left">LEFT</button>
+            <button type="button" id="right-btn" class="side-btn side-btn--right" data-side="right">RIGHT</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="start-time-input">Start time</label>
+          <input type="datetime-local" id="start-time-input" class="native-input" step="60">
+        </div>
+
+        <div class="form-actions">
+          <button type="button" id="save-btn" class="save-btn">Log Feed</button>
+        </div>
+        <p id="form-error" class="form-error hidden"></p>
+        <p id="form-success" class="form-success hidden"></p>
+      </div>
+    </section>
+
+    <section id="tab-history" class="tab-screen hidden">
+
+      <div id="history-list-view">
+        <div class="screen-history">
+          <h2 class="history-title">Feed History</h2>
+          <div id="history-list" class="history-list"></div>
+        </div>
+      </div>
+
+      <div id="history-edit-view" class="form-section hidden">
+        <button type="button" id="back-btn" class="back-btn">&larr; Back</button>
+        <h1 class="app-title">Edit Feed</h1>
+
+        <div class="field">
+          <label class="field-label">Side</label>
+          <div class="side-buttons">
+            <button type="button" id="edit-left-btn" class="side-btn side-btn--left" data-side="left">LEFT</button>
+            <button type="button" id="edit-right-btn" class="side-btn side-btn--right" data-side="right">RIGHT</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="edit-start-time-input">Start time</label>
+          <input type="datetime-local" id="edit-start-time-input" class="native-input" step="60">
+        </div>
+
+        <div class="field">
+          <label class="field-label">Tags</label>
+          <div class="tag-buttons">
+            <button type="button" class="tag-btn" data-tag="spitup">
+              <span class="tag-emoji">🤮</span>
+              <span class="tag-label">Spit up</span>
+            </button>
+            <button type="button" class="tag-btn" data-tag="reflux">
+              <span class="tag-emoji">🤢</span>
+              <span class="tag-label">Reflux</span>
+            </button>
+            <button type="button" class="tag-btn" data-tag="crying">
+              <span class="tag-emoji">😢</span>
+              <span class="tag-label">Crying</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="edit-notes-input">Notes</label>
+          <textarea id="edit-notes-input" class="native-input notes-input" rows="3" placeholder="Add a note..."></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" id="edit-save-btn" class="save-btn">Save Changes</button>
+          <button type="button" id="delete-btn" class="delete-btn">Delete</button>
+        </div>
+        <p id="edit-form-error" class="form-error hidden"></p>
+      </div>
+
+    </section>
+
+  </main>
+
+  <nav class="tab-bar">
+    <button type="button" class="tab-bar-btn selected" data-tab="log">
+      <span class="tab-bar-icon">✏️</span>
+      <span class="tab-bar-label">Log</span>
+    </button>
+    <button type="button" class="tab-bar-btn" data-tab="history">
+      <span class="tab-bar-icon">📋</span>
+      <span class="tab-bar-label">History</span>
+    </button>
+  </nav>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="config.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
