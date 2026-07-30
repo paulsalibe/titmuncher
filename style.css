@@ -41,6 +41,7 @@ html, body {
   width: 100%;
   max-width: 260px;
   height: auto;
+  filter: drop-shadow(0 4px 0 rgba(0, 0, 0, 0.08));
 }
 
 #main-content {
@@ -138,6 +139,18 @@ html, body {
   background: var(--card-bg);
   color: var(--text);
   font-family: inherit;
+}
+
+/* iOS Safari lets datetime-local/time inputs ignore an explicit width and
+   overflow their container. Forcing it to be a shrinkable flex item keeps
+   it inside the same width as everything else on the page. */
+.input-wrap {
+  display: flex;
+}
+
+.input-wrap .native-input {
+  flex: 1;
+  min-width: 0;
 }
 
 .notes-input {
