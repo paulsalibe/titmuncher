@@ -266,6 +266,19 @@ html, body {
   gap: 8px;
 }
 
+.history-day-header {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 14px 4px 2px;
+}
+
+.history-day-header:first-child {
+  padding-top: 2px;
+}
+
 .history-empty {
   color: var(--muted);
   font-size: 14px;

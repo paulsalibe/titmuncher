@@ -231,8 +231,19 @@ function renderHistory(rows) {
   }
 
   historyList.innerHTML = "";
+  let lastDayKey = null;
   rows.forEach((row) => {
     const date = new Date(row.start_time);
+    const dayKey = date.toDateString();
+
+    if (dayKey !== lastDayKey) {
+      lastDayKey = dayKey;
+      const dayHeader = document.createElement("div");
+      dayHeader.className = "history-day-header";
+      dayHeader.textContent = formatDayLabel(date);
+      historyList.appendChild(dayHeader);
+    }
+
     const tagsHtml = (row.tags || []).map((tag) => TAG_LABELS[tag] || "").join(" ");
     const item = document.createElement("button");
     item.type = "button";
@@ -241,7 +252,7 @@ function renderHistory(rows) {
       <span class="history-dot history-dot--${row.side}"></span>
       <div class="history-details">
         <span class="history-time">${formatClockTime(date)}</span>
-        <span class="history-meta">${formatDayLabel(date)} · ${row.side}</span>
+        <span class="history-meta">${row.side}</span>
         ${tagsHtml ? `<span class="history-tags">${tagsHtml}</span>` : ""}
         ${row.notes ? `<span class="history-notes">${escapeHtml(row.notes)}</span>` : ""}
       </div>
